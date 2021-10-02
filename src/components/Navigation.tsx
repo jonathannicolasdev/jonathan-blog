@@ -1,29 +1,42 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
-import Burger from "./Burger";
-import { useState } from "react";
+import { useState } from 'react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+
+import Burger from './Burger'
 
 export default function Navigation() {
-  const router = useRouter();
-  const [active, setActive] = useState(false);
+  const router = useRouter()
+  const [active, setActive] = useState(false)
+
   return (
     <>
       <Burger active={active} onClick={() => setActive(!active)} />
-      <div className={"container " + (active ? "active" : "")}>
+      <div className={'container ' + (active ? 'active' : '')}>
         <ul>
           <li>
             <Link href="/">
-              <a className={router.pathname === "/" ? "active" : null}>about</a>
+              <a className={router.pathname === '/' ? 'active' : null}>About</a>
             </Link>
           </li>
           <li>
             <Link href="/posts">
               <a
                 className={
-                  router.pathname.startsWith("/posts") ? "active" : null
+                  router.pathname.startsWith('/posts') ? 'active' : null
                 }
               >
-                blog
+                Posts
+              </a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/artworks">
+              <a
+                className={
+                  router.pathname.startsWith('/artworks') ? 'active' : null
+                }
+              >
+                Artworks
               </a>
             </Link>
           </li>
@@ -88,5 +101,5 @@ export default function Navigation() {
         </style>
       </div>
     </>
-  );
+  )
 }

@@ -1,19 +1,18 @@
+import { ArtworkContent } from '../lib/artworks'
+import Date from './Date'
 import Link from 'next/link'
 import { parseISO } from 'date-fns'
 
-import Date from './Date'
-import { PostContent } from '../lib/posts'
-
 type Props = {
-  post: PostContent
+  artwork: ArtworkContent
 }
 
-export default function PostItem({ post }: Props) {
+export default function ArtworkItem({ artwork }: Props) {
   return (
-    <Link href={'/posts/' + post.slug}>
+    <Link href={'/artworks/' + artwork.slug}>
       <a>
-        <Date date={parseISO(post.date)} />
-        <h2>{post.title}</h2>
+        <Date date={parseISO(artwork.date)} />
+        <h2>{artwork.title}</h2>
         <style jsx>
           {`
             a {
